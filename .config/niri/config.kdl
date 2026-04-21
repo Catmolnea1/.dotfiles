@@ -424,6 +424,8 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
 
+    Mod+Alt+Y hotkey-overlay-title="Phone" { spawn-sh "scrcpy --max-fps 120"; }
+
     Mod+M { spawn "pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"; }
 
     Mod+T hotkey-overlay-title="Telegram" { spawn "Telegram"; } 
