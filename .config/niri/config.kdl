@@ -7,7 +7,7 @@
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
 input {
-    keyboard {
+   keyboard {
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
@@ -26,6 +26,9 @@ input {
         // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
+  mod-key "Super"
+  mod-key-nested "Alt"
+
 
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
@@ -78,7 +81,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "HDMI-A-2" {
+output "HDMI-A-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -410,6 +413,7 @@ window-rule {
     open-fullscreen true
 }
 
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -429,7 +433,7 @@ binds {
     Mod+M { spawn "pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"; }
 
     Mod+T hotkey-overlay-title="Telegram" { spawn "Telegram"; } 
-    Mod+H hotkey-overlay-title="Discord" { spawn "discord"; }
+    Mod+H hotkey-overlay-title="Discord" { spawn "vesktop"; }
     Mod+E hotkey-overlay-title="Dolphin" { spawn "dolphin"; }
 
     Mod+B hotkey-overlay-title="Firefox" { spawn "firefox"; }
