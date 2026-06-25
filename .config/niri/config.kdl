@@ -28,7 +28,7 @@ input {
     }
   mod-key "Super"
   mod-key-nested "Alt"
-
+  disable-power-key-handling
 
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
@@ -427,6 +427,8 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
+
+    XF86PowerOff { spawn "systemctl" "suspend"; }
 
     Mod+Alt+Y hotkey-overlay-title="Phone" { spawn-sh "scrcpy --max-fps 120"; }
 
