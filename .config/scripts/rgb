@@ -1,0 +1,51 @@
+#!/bin/bash
+
+DIR="$HOME/.config/OpenRGB"
+FILE1="$DIR/Def.orp"
+FILE2="$DIR/Def0.orp"
+
+FILE_STATE="/tmp/rgbstate"
+
+# Проверяем, что директория существует
+if [ ! -d "$DIR" ]; then
+  echo "Ошибка: директория $DIR не найдена"
+  exit 1
+fi
+
+# Проверяем, что файлы профилей существуют
+if [ ! -f "$FILE1" ] || [ ! -f "$FILE2" ]; then
+  echo "Ошибка: один из файлов профилей не найден"
+  exit 1
+fi
+
+turn_on() {
+  openrgb -p "$FILE1"
+  echo "on" >"$FILE_STATE"
+}
+
+turn_off() {
+  openrgb -p "$FILE2"
+  echo "off" >"$FILE_STATE"
+}
+
+# Проверяем текущее состояние
+if [ -f "$FILE_STATE" ]; then
+  CURRENT_STATE=$(cat "$FILE_STATE")
+else
+  # Если файла состояния нет, считаем, что подсветка включена
+  CURRENT_STATE="on"
+fi
+
+# Переключаем состояние
+case "$CURRENT_STATE" in
+"on")
+  turn_off
+  ;;
+"off")
+  turn_on
+  ;;
+*)
+  # На случай если в файле что-то другое
+  turn_on
+  ;;
+esac

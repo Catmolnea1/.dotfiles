@@ -91,7 +91,7 @@ output "HDMI-A-1" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@60"
+    mode custom=true "1920x1080@76"
 
     focus-at-startup
     variable-refresh-rate
@@ -307,9 +307,12 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
+spawn-sh-at-startup "vicinae server"
 spawn-at-startup "awww-daemon"
 spawn-at-startup "swaync -c ~/.config/swaync/config.json"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-sh-at-startup "~/starterserver"
+spawn-sh-at-startup "openrgb --server"
 
 
 
@@ -442,13 +445,14 @@ binds {
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    Mod+P { spawn-sh "~/.config/scripts/rgb"; }
 
     Mod+Ctrl+V hotkey-overlay-title="pavucontrol" { spawn "pavucontrol"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+N hotkey-overlay-title="swaync" { spawn-sh "swaync-client -t -sw"; }
     Mod+W hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+R hotkey-overlay-title="Run an Application: vicinae" { spawn-sh "vicinae toggle"; }
     Mod+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
     Super+Shift+L { spawn-sh "systemctl suspend"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
