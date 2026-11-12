@@ -316,8 +316,8 @@ spawn-at-startup "awww-daemon"
 spawn-at-startup "swaync -c ~/.config/swaync/config.json"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-sh-at-startup "~/starterserver"
-spawn-sh-at-startup "openrgb --server"
-spawn-sh-at-startup "openrgb -p ~/.config/OpenRGB/Def.orp"
+//spawn-sh-at-startup "openrgb --server"
+//spawn-sh-at-startup "openrgb -p ~/.config/OpenRGB/Def.orp"
 
 
 
